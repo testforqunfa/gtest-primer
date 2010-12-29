@@ -18,3 +18,7 @@ void Car::drive(int miles) {
   if (miles >= 0)
     _miles = add(_miles, miles);
 }
+
+void Car::crash() {
+  throw "a string as exception";
+}

@@ -32,3 +32,9 @@ TEST_F(CarTestFixture, DriveTest) {
   car->drive(-10);
   EXPECT_EQ(30, car->getMiles()) << "We need to ignore the reverse of the car";
 }
+
+TEST_F(CarTestFixture, CrashTest) {
+  ASSERT_THROW(car->crash(), string);
+  EXPECT_THROW(car->crash(), string);
+  EXPECT_ANY_THROW(car->crash());
+}

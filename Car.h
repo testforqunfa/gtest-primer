@@ -10,6 +10,7 @@ public:
   string getName();
   int getMiles();
   void drive(int miles);
+  void crash();
 
 private:
   string _name;
