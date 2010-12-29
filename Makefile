@@ -26,7 +26,6 @@ addTest.o: addTest.cpp add.h
 CarTest.o: CarTest.cpp Car.h
 	$(CLANG) $(CXXFLAGS) -c CarTest.cpp
 
-
 test: canary.o addTest.o add.o CarTest.o Car.o
 	$(CLANG) $(LDFLAGS) $^ -o $@ $(LIBS)
 
