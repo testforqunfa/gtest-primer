@@ -14,4 +14,6 @@ TEST(CarTest, DriveTest) {
   EXPECT_EQ(10, car.getMiles());
   car.drive(20);
   EXPECT_EQ(30, car.getMiles());
+  car.drive(-10);
+  EXPECT_EQ(30, car.getMiles()) << "We need to ignore the reverse of the car";
 }

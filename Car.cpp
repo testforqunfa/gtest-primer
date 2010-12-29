@@ -15,5 +15,6 @@ int Car::getMiles() {
 }
 
 void Car::drive(int miles) {
-  _miles = add(_miles, miles);
+  if (miles >= 0)
+    _miles = add(_miles, miles);
 }
