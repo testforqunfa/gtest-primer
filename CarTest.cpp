@@ -34,7 +34,5 @@ TEST_F(CarTestFixture, DriveTest) {
 }
 
 TEST_F(CarTestFixture, CrashTest) {
-  ASSERT_THROW(car->crash(), string);
-  EXPECT_THROW(car->crash(), string);
   EXPECT_ANY_THROW(car->crash());
 }
