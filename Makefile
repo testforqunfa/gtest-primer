@@ -1,8 +1,5 @@
-LLVMBUILD=../../code/llvmBuild
-LLVMBIN=$(LLVMBUILD)/bin
-CLANG=$(LLVMBIN)/clang++
-CLANG=g++
-CXXFLAGS=-I../../../googletest/include -fprofile-arcs -ftest-coverage
+CC=g++
+CXXFLAGS=-I../../../googletest/include
 LDFLAGS=-L../../code/gtestBuild
 LIBS=-lgtest -lgtest_main -lpthread -lgcov
 
@@ -13,22 +10,26 @@ clean:
 	rm -rf test
 	rm -rf *.gcda
 	rm -rf *.gcno
+	rm -rf *.gcov
+	rm -rf *.html
+	rm -rf *.css
+	rm -rf *.png
 
 canaryTest.o: canaryTest.cpp
-	$(CLANG) $(CXXFLAGS) -c canaryTest.cpp
+	$(CC) $(CXXFLAGS) -c canaryTest.cpp
 
 add.o: add.cpp add.h
-	$(CLANG) $(CXXFLAGS) -c add.cpp
+	$(CC) $(CXXFLAGS) -fprofile-arcs -ftest-coverage -c add.cpp
 
 Car.o: Car.cpp Car.h
-	$(CLANG) $(CXXFLAGS) -c Car.cpp
+	$(CC) $(CXXFLAGS) -fprofile-arcs -ftest-coverage -c Car.cpp
 
 addTest.o: addTest.cpp add.h
-	$(CLANG) $(CXXFLAGS) -c addTest.cpp
+	$(CC) $(CXXFLAGS) -c addTest.cpp
 
 CarTest.o: CarTest.cpp Car.h
-	$(CLANG) $(CXXFLAGS) -c CarTest.cpp
+	$(CC) $(CXXFLAGS) -c CarTest.cpp
 
 test: canaryTest.o addTest.o add.o CarTest.o Car.o
-	$(CLANG) $(LDFLAGS) $^ -o $@ $(LIBS)
+	$(CC) $(LDFLAGS) $^ -o $@ $(LIBS)
 
